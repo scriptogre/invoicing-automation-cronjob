@@ -7,7 +7,6 @@ load_dotenv()
 # Factureaza.ro configuration
 FACTUREAZA_RO_API_URL = os.environ.get('FACTUREAZA_RO_API_URL')
 FACTUREAZA_RO_API_KEY = os.environ.get('FACTUREAZA_RO_API_KEY')
-FACTUREAZA_RO_API_SECRET = os.environ.get('FACTUREAZA_RO_API_SECRET')
 
 # Outlook configuration
 OUTLOOK_HOST = os.environ.get('OUTLOOK_HOST')
