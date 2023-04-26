@@ -14,6 +14,10 @@ OUTLOOK_PORT = os.environ.get('OUTLOOK_PORT')
 OUTLOOK_EMAIL = os.environ.get('OUTLOOK_EMAIL')
 OUTLOOK_PASSWORD = os.environ.get('OUTLOOK_PASSWORD')
 
+# MailHog configuration (for development)
+MAILHOG_HOST = os.environ.get('MAILHOG_HOST')
+MAILHOG_PORT = os.environ.get('MAILHOG_PORT')
+
 # Sentry DSN
 SENTRY_DSN = os.environ.get('SENTRY_DSN')
 
