@@ -1,21 +1,31 @@
-# Make sure Sentry is initialized before importing any other code
-import sentry_config
-
 import json
 import requests
-from fastapi import FastAPI, HTTPException
 import xmltodict
+import sentry_sdk
 
-from config import FACTUREAZA_RO_API_URL, FACTUREAZA_RO_API_KEY
+from fastapi import FastAPI, HTTPException
+
+from config import FACTUREAZA_RO_API_URL, FACTUREAZA_RO_API_KEY, SENTRY_DSN
+
+# Sentry configuration
+sentry_sdk.init(
+    dsn=SENTRY_DSN,
+    traces_sample_rate=1.0,
+)
+
+auth = (FACTUREAZA_RO_API_KEY, 'x')
 
 app = FastAPI()
 
-auth = (FACTUREAZA_RO_API_KEY, 'x')
+
+@app.get("/sentry-debug")
+async def trigger_error():
+    division_by_zero = 1 / 0
 
 
 @app.get("/invoices")
 def process_invoice():
-    url = FACTUREAZA_RO_API_URL + 'invoices.xml'
+    url = FACTUREAZA_RO_API_URL + '/invoices.xml'
     response = requests.get(url, auth=auth, verify=False)
 
     if response.status_code != 200:
