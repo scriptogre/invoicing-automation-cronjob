@@ -38,10 +38,6 @@ To build and run the application using Docker:
 ```bash
 docker build -t invoicing-automation-cronjob .
 docker run invoicing-automation-cronjob
-or using Docker:
-
-```bash
-docker build .
 ```
 
 ## Error Reporting
